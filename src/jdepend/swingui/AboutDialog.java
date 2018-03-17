@@ -1,14 +1,12 @@
 package jdepend.swingui;
 
-import org.checkerframework.checker.initialization.qual.UnderInitialization;
-
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
 /**
  * The <code>AboutDialog</code> displays the about information.
- *
+ * 
  * @author <b>Mike Clark</b>
  * @author Clarkware Consulting, Inc.
  */
@@ -17,7 +15,7 @@ class AboutDialog extends JDialog {
 
     /**
      * Constructs an <code>AboutDialog</code> with the specified parent frame.
-     *
+     * 
      * @param parent Parent frame.
      */
     public AboutDialog(JFrame parent) {
@@ -77,11 +75,11 @@ class AboutDialog extends JDialog {
 
     /**
      * Creates and returns a button with the specified label.
-     *
+     * 
      * @param label Button label.
      * @return Button.
      */
-    private JButton createButton(@UnderInitialization AboutDialog this, String label) {
+    private JButton createButton(String label) {
 
         JButton button = new JButton(label);
         button.addActionListener(new ActionListener() {
@@ -97,12 +95,12 @@ class AboutDialog extends JDialog {
     /**
      * Creates and returns a grid bag constraint with the specified x and y
      * values.
-     *
+     * 
      * @param x X-coordinate.
      * @param y Y-coordinate.
      * @return GridBagConstraints
      */
-    private GridBagConstraints createConstraints(@UnderInitialization AboutDialog this, int x, int y) {
+    private GridBagConstraints createConstraints(int x, int y) {
 
         GridBagConstraints constraints = new GridBagConstraints();
         constraints.gridx = x;
