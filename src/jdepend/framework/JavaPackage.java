@@ -1,10 +1,12 @@
 package jdepend.framework;
 
+import org.checkerframework.checker.initialization.qual.UnderInitialization;
+
 import java.util.*;
 
 /**
  * The <code>JavaPackage</code> class represents a Java package.
- * 
+ *
  * @author <b>Mike Clark</b>
  * @author Clarkware Consulting, Inc.
  */
@@ -44,7 +46,7 @@ public class JavaPackage {
     /**
      * @param v Volatility (0-1).
      */
-    public void setVolatility(int v) {
+    public void setVolatility(@UnderInitialization JavaPackage this, int v) {
         volatility = v;
     }
 
@@ -55,7 +57,7 @@ public class JavaPackage {
     /**
      * Collects the packages participating in the first package dependency cycle
      * detected which originates from this package.
-     * 
+     *
      * @param list Collecting object to be populated with the list of
      *            JavaPackage instances in a cycle.
      * @return <code>true</code> if a cycle exist; <code>false</code>
@@ -88,7 +90,7 @@ public class JavaPackage {
      * <p>
      * This is a more exhaustive search than that employed by
      * <code>collectCycle</code>.
-     * 
+     *
      * @param list Collecting object to be populated with the list of
      *            JavaPackage instances in a cycle.
      * @return <code>true</code> if a cycle exist; <code>false</code>
@@ -114,7 +116,7 @@ public class JavaPackage {
         if (containsCycle) {
             return true;
         }
-        
+
         list.remove(this);
         return false;
     }
@@ -158,9 +160,9 @@ public class JavaPackage {
     }
 
     /**
-     * Adds the specified Java package as an efferent of this package 
+     * Adds the specified Java package as an efferent of this package
      * and adds this package as an afferent of it.
-     * 
+     *
      * @param imported Java package.
      */
     public void dependsUpon(JavaPackage imported) {
@@ -170,7 +172,7 @@ public class JavaPackage {
 
     /**
      * Adds the specified Java package as an afferent of this package.
-     * 
+     *
      * @param jPackage Java package.
      */
     public void addAfferent(JavaPackage jPackage) {
@@ -265,7 +267,7 @@ public class JavaPackage {
     public int hashCode() {
         return getName().hashCode();
     }
-    
+
     public String toString() {
     	return name;
     }

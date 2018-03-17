@@ -4,11 +4,12 @@ import java.text.NumberFormat;
 import java.util.*;
 
 import jdepend.framework.*;
+import qual.Assignable;
 
 /**
  * The <code>PackageNode</code> class defines the default behavior for tree
  * nodes representing Java packages.
- * 
+ *
  * @author <b>Mike Clark</b>
  * @author Clarkware Consulting, Inc.
  */
@@ -19,7 +20,7 @@ public abstract class PackageNode {
 
     private JavaPackage jPackage;
 
-    private ArrayList children;
+    private @Assignable ArrayList children;
 
     private static NumberFormat formatter;
     static {
@@ -30,7 +31,7 @@ public abstract class PackageNode {
     /**
      * Constructs a <code>PackageNode</code> with the specified package and
      * its collection of dependent packages.
-     * 
+     *
      * @param parent Parent package node.
      * @param jPackage Java package.
      */
@@ -42,7 +43,7 @@ public abstract class PackageNode {
 
     /**
      * Returns the Java package represented in this node.
-     * 
+     *
      * @return Java package.
      */
     public JavaPackage getPackage() {
@@ -51,7 +52,7 @@ public abstract class PackageNode {
 
     /**
      * Returns the parent of this package node.
-     * 
+     *
      * @return Parent package node.
      */
     public PackageNode getParent() {
@@ -60,7 +61,7 @@ public abstract class PackageNode {
 
     /**
      * Indicates whether this node is a leaf node.
-     * 
+     *
      * @return <code>true</code> if this node is a leaf; <code>false</code>
      *         otherwise.
      */
@@ -75,7 +76,7 @@ public abstract class PackageNode {
     /**
      * Creates and returns a <code>PackageNode</code> with the specified
      * parent node and Java package.
-     * 
+     *
      * @param parent Parent package node.
      * @param jPackage Java package.
      * @return A non-null <code>PackageNode</code.
@@ -86,7 +87,7 @@ public abstract class PackageNode {
     /**
      * Returns the collection of Java packages coupled to the package
      * represented in this node.
-     * 
+     *
      * @return Collection of coupled packages.
      */
     protected abstract Collection getCoupledPackages();
@@ -94,7 +95,7 @@ public abstract class PackageNode {
     /**
      * Indicates whether the specified package should be displayed as a child of
      * this node.
-     * 
+     *
      * @param jPackage Package to test.
      * @return <code>true</code> to display the package; <code>false</code>
      *         otherwise.
@@ -105,7 +106,7 @@ public abstract class PackageNode {
 
     /**
      * Returns the child package nodes of this node.
-     * 
+     *
      * @return Collection of child package nodes.
      */
     public ArrayList getChildren() {
@@ -131,7 +132,7 @@ public abstract class PackageNode {
 
     /**
      * Returns the string representation of this node's metrics.
-     * 
+     *
      * @return Metrics string.
      */
     public String toMetricsString() {
@@ -158,7 +159,7 @@ public abstract class PackageNode {
     /**
      * Returns the string representation of this node in it's current tree
      * context.
-     * 
+     *
      * @return Node label.
      */
     public String toString() {
