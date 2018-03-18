@@ -1,18 +1,16 @@
 package jdepend.framework;
 
-import org.checkerframework.checker.initialization.qual.UnderInitialization;
-
 import java.io.*;
 import java.util.*;
 
 /**
- * The <code>PackageFilter</code> class is used to filter imported
+ * The <code>PackageFilter</code> class is used to filter imported 
  * package names.
  * <p>
  * The default filter contains any packages declared in the
- * <code>jdepend.properties</code> file, if such a file exists
+ * <code>jdepend.properties</code> file, if such a file exists 
  * either in the user's home directory or somewhere in the classpath.
- *
+ * 
  * @author <b>Mike Clark</b>
  * @author Clarkware Consulting, Inc.
  */
@@ -22,8 +20,8 @@ public class PackageFilter {
     private Collection filtered;
 
     /**
-     * Constructs a <code>PackageFilter</code> instance containing
-     * the filters specified in the <code>jdepend.properties</code> file,
+     * Constructs a <code>PackageFilter</code> instance containing 
+     * the filters specified in the <code>jdepend.properties</code> file, 
      * if it exists.
      */
     public PackageFilter() {
@@ -33,9 +31,9 @@ public class PackageFilter {
     }
 
     /**
-     * Constructs a <code>PackageFilter</code> instance containing
+     * Constructs a <code>PackageFilter</code> instance containing 
      * the filters contained in the specified file.
-     *
+     * 
      * @param f Property file.
      */
     public PackageFilter(File f) {
@@ -45,9 +43,9 @@ public class PackageFilter {
     }
 
     /**
-     * Constructs a <code>PackageFilter</code> instance with the
+     * Constructs a <code>PackageFilter</code> instance with the 
      * specified collection of package names to filter.
-     *
+     * 
      * @param packageNames Package names to filter.
      */
     public PackageFilter(Collection packageNames) {
@@ -57,7 +55,7 @@ public class PackageFilter {
 
     /**
      * Returns the collection of filtered package names.
-     *
+     * 
      * @return Filtered package names.
      */
     public Collection getFilters() {
@@ -66,7 +64,7 @@ public class PackageFilter {
 
     /**
      * Indicates whether the specified package name passes this package filter.
-     *
+     * 
      * @param packageName Package name.
      * @return <code>true</code> if the package name should be included;
      *         <code>false</code> otherwise.
@@ -82,13 +80,13 @@ public class PackageFilter {
         return true;
     }
 
-    public void addPackages(@UnderInitialization PackageFilter this, Collection packageNames) {
+    public void addPackages(Collection packageNames) {
         for (Iterator i = packageNames.iterator(); i.hasNext();) {
             addPackage((String)i.next());
         }
     }
 
-    public void addPackage(@UnderInitialization PackageFilter this, String packageName) {
+    public void addPackage(String packageName) {
         if (packageName.endsWith("*")) {
             packageName = packageName.substring(0, packageName.length() - 1);
         }
