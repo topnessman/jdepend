@@ -4,10 +4,10 @@ import java.io.*;
 import java.util.*;
 
 /**
- * The <code>FileManager</code> class is responsible for extracting 
- * Java class files (<code>.class</code> files) from a collection of 
+ * The <code>FileManager</code> class is responsible for extracting
+ * Java class files (<code>.class</code> files) from a collection of
  * registered directories.
- * 
+ *
  * @author <b>Mike Clark</b>
  * @author Clarkware Consulting, Inc.
  */
@@ -25,8 +25,8 @@ public class FileManager {
 
     /**
      * Determines whether inner classes should be collected.
-     * 
-     * @param b <code>true</code> to collect inner classes; 
+     *
+     * @param b <code>true</code> to collect inner classes;
      *          <code>false</code> otherwise.
      */
     public void acceptInnerClasses(boolean b) {
@@ -76,7 +76,7 @@ public class FileManager {
 
     public Collection extractFiles() {
 
-        Collection files = new TreeSet();
+        Collection files = new ArrayList();
 
         for (Iterator i = directories.iterator(); i.hasNext();) {
             File directory = (File)i.next();
@@ -114,18 +114,22 @@ public class FileManager {
         }
     }
 
+    @universe.qual.Pure
     private boolean isWar(File file) {
         return existsWithExtension(file, ".war");
     }
 
+    @universe.qual.Pure
     private boolean isZip(File file) {
         return existsWithExtension(file, ".zip");
     }
- 
+
+    @universe.qual.Pure
     private boolean isJar(File file) {
         return existsWithExtension(file, ".jar");
     }
 
+    @universe.qual.Pure
     private boolean existsWithExtension(File file, String extension) {
         return file.isFile() &&
             file.getName().toLowerCase().endsWith(extension);

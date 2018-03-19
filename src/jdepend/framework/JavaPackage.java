@@ -4,7 +4,7 @@ import java.util.*;
 
 /**
  * The <code>JavaPackage</code> class represents a Java package.
- * 
+ *
  * @author <b>Mike Clark</b>
  * @author Clarkware Consulting, Inc.
  */
@@ -30,6 +30,7 @@ public class JavaPackage {
         efferents = new ArrayList();
     }
 
+    @universe.qual.Pure
     public String getName() {
         return name;
     }
@@ -37,6 +38,7 @@ public class JavaPackage {
     /**
      * @return The package's volatility (0-1).
      */
+    @universe.qual.Pure
     public int getVolatility() {
         return volatility;
     }
@@ -55,7 +57,7 @@ public class JavaPackage {
     /**
      * Collects the packages participating in the first package dependency cycle
      * detected which originates from this package.
-     * 
+     *
      * @param list Collecting object to be populated with the list of
      *            JavaPackage instances in a cycle.
      * @return <code>true</code> if a cycle exist; <code>false</code>
@@ -88,7 +90,7 @@ public class JavaPackage {
      * <p>
      * This is a more exhaustive search than that employed by
      * <code>collectCycle</code>.
-     * 
+     *
      * @param list Collecting object to be populated with the list of
      *            JavaPackage instances in a cycle.
      * @return <code>true</code> if a cycle exist; <code>false</code>
@@ -114,7 +116,7 @@ public class JavaPackage {
         if (containsCycle) {
             return true;
         }
-        
+
         list.remove(this);
         return false;
     }
@@ -123,14 +125,17 @@ public class JavaPackage {
         classes.add(clazz);
     }
 
+    @universe.qual.Pure
     public Collection getClasses() {
         return classes;
     }
 
+    @universe.qual.Pure
     public int getClassCount() {
         return classes.size();
     }
 
+    @universe.qual.Pure
     public int getAbstractClassCount() {
         int count = 0;
 
@@ -144,6 +149,7 @@ public class JavaPackage {
         return count;
     }
 
+    @universe.qual.Pure
     public int getConcreteClassCount() {
         int count = 0;
 
@@ -158,9 +164,9 @@ public class JavaPackage {
     }
 
     /**
-     * Adds the specified Java package as an efferent of this package 
+     * Adds the specified Java package as an efferent of this package
      * and adds this package as an afferent of it.
-     * 
+     *
      * @param imported Java package.
      */
     public void dependsUpon(JavaPackage imported) {
@@ -170,7 +176,7 @@ public class JavaPackage {
 
     /**
      * Adds the specified Java package as an afferent of this package.
-     * 
+     *
      * @param jPackage Java package.
      */
     public void addAfferent(JavaPackage jPackage) {
@@ -181,6 +187,7 @@ public class JavaPackage {
         }
     }
 
+    @universe.qual.Pure
     public Collection getAfferents() {
         return afferents;
     }
@@ -197,6 +204,7 @@ public class JavaPackage {
         }
     }
 
+    @universe.qual.Pure
     public Collection getEfferents() {
         return efferents;
     }
@@ -208,6 +216,7 @@ public class JavaPackage {
     /**
      * @return The afferent coupling (Ca) of this package.
      */
+    @universe.qual.Pure
     public int afferentCoupling() {
         return afferents.size();
     }
@@ -215,6 +224,7 @@ public class JavaPackage {
     /**
      * @return The efferent coupling (Ce) of this package.
      */
+    @universe.qual.Pure
     public int efferentCoupling() {
         return efferents.size();
     }
@@ -222,6 +232,7 @@ public class JavaPackage {
     /**
      * @return Instability (0-1).
      */
+    @universe.qual.Pure
     public float instability() {
 
         float totalCoupling = (float) efferentCoupling()
@@ -237,6 +248,7 @@ public class JavaPackage {
     /**
      * @return The package's abstractness (0-1).
      */
+    @universe.qual.Pure
     public float abstractness() {
 
         if (getClassCount() > 0) {
@@ -249,6 +261,7 @@ public class JavaPackage {
     /**
      * @return The package's distance from the main sequence (D).
      */
+    @universe.qual.Pure
     public float distance() {
         float d = Math.abs(abstractness() + instability() - 1);
         return d * volatility;
@@ -264,9 +277,5 @@ public class JavaPackage {
 
     public int hashCode() {
         return getName().hashCode();
-    }
-    
-    public String toString() {
-    	return name;
     }
 }

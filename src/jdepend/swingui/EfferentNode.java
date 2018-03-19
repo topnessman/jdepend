@@ -7,7 +7,7 @@ import jdepend.framework.*;
 /**
  * The <code>EfferentNode</code> class is a <code>PackageNode</code> for an
  * efferent Java package and its efferent packages.
- * 
+ *
  * @author <b>Mike Clark</b>
  * @author Clarkware Consulting, Inc.
  */
@@ -17,7 +17,7 @@ public class EfferentNode extends PackageNode {
     /**
      * Constructs an <code>EfferentNode</code> with the specified parent node
      * and efferent Java package.
-     * 
+     *
      * @param parent Parent package node.
      * @param jPackage Efferent Java package.
      */
@@ -28,7 +28,7 @@ public class EfferentNode extends PackageNode {
     /**
      * Creates and returns a <code>PackageNode</code> with the specified
      * parent node and Java package.
-     * 
+     *
      * @param parent Parent package node.
      * @param jPackage Java package.
      * @return A non-null <code>PackageNode</code.
@@ -40,9 +40,10 @@ public class EfferentNode extends PackageNode {
     /**
      * Returns the collection of Java packages coupled to the package
      * represented in this node.
-     * 
+     *
      * @return Collection of coupled packages.
      */
+    @universe.qual.Pure
     protected Collection getCoupledPackages() {
         return getPackage().getEfferents();
     }
@@ -53,11 +54,12 @@ public class EfferentNode extends PackageNode {
      * <p>
      * Efferent packages without classes are never shown at the root level to
      * exclude non-analyzed packages.
-     * 
+     *
      * @param jPackage Package to test.
      * @return <code>true</code> to display the package; <code>false</code>
      *         otherwise.
      */
+    @universe.qual.Pure
     public boolean isChild(JavaPackage jPackage) {
         if (getParent() != null) {
             return true;
@@ -71,7 +73,7 @@ public class EfferentNode extends PackageNode {
     /**
      * Returns the string representation of this node in it's current tree
      * context.
-     * 
+     *
      * @return Node label.
      */
     public String toString() {

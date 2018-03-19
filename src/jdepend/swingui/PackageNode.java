@@ -4,7 +4,6 @@ import java.text.NumberFormat;
 import java.util.*;
 
 import jdepend.framework.*;
-import qual.Assignable;
 
 /**
  * The <code>PackageNode</code> class defines the default behavior for tree
@@ -20,7 +19,7 @@ public abstract class PackageNode {
 
     private JavaPackage jPackage;
 
-    private @Assignable ArrayList children;
+    private ArrayList children;
 
     private static NumberFormat formatter;
     static {
@@ -46,6 +45,7 @@ public abstract class PackageNode {
      *
      * @return Java package.
      */
+    @universe.qual.Pure
     public JavaPackage getPackage() {
         return jPackage;
     }
@@ -65,6 +65,7 @@ public abstract class PackageNode {
      * @return <code>true</code> if this node is a leaf; <code>false</code>
      *         otherwise.
      */
+    @universe.qual.Pure
     public boolean isLeaf() {
         if (getCoupledPackages().size() > 0) {
             return false;
@@ -100,6 +101,7 @@ public abstract class PackageNode {
      * @return <code>true</code> to display the package; <code>false</code>
      *         otherwise.
      */
+    @universe.qual.Pure
     public boolean isChild(JavaPackage jPackage) {
         return true;
     }
@@ -109,6 +111,7 @@ public abstract class PackageNode {
      *
      * @return Collection of child package nodes.
      */
+    @universe.qual.Pure
     public ArrayList getChildren() {
 
         if (children == null) {

@@ -3,9 +3,9 @@ package jdepend.framework;
 import java.util.*;
 
 /**
- * The <code>JavaClass</code> class represents a Java 
+ * The <code>JavaClass</code> class represents a Java
  * class or interface.
- * 
+ *
  * @author <b>Mike Clark</b>
  * @author Clarkware Consulting, Inc.
  */
@@ -31,6 +31,7 @@ public class JavaClass {
         className = name;
     }
 
+    @universe.qual.Pure
     public String getName() {
         return className;
     }
@@ -39,6 +40,7 @@ public class JavaClass {
         packageName = name;
     }
 
+    @universe.qual.Pure
     public String getPackageName() {
         return packageName;
     }
@@ -47,10 +49,12 @@ public class JavaClass {
         sourceFile = name;
     }
 
+    @universe.qual.Pure
     public String getSourceFile() {
         return sourceFile;
     }
 
+    @universe.qual.Pure
     public Collection getImportedPackages() {
         return imports.values();
     }
@@ -61,6 +65,7 @@ public class JavaClass {
         }
     }
 
+    @universe.qual.Pure
     public boolean isAbstract() {
         return isAbstract;
     }

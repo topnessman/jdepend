@@ -12,10 +12,10 @@ import java.util.StringTokenizer;
 
 /**
  * The <code>PropertyConfigurator</code> class contains configuration
- * information contained in the <code>jdepend.properties</code> file, 
- * if such a file exists either in the user's home directory or somewhere 
+ * information contained in the <code>jdepend.properties</code> file,
+ * if such a file exists either in the user's home directory or somewhere
  * in the classpath.
- * 
+ *
  * @author <b>Mike Clark</b>
  * @author Clarkware Consulting, Inc.
  */
@@ -27,7 +27,7 @@ public class PropertyConfigurator {
     public static final String DEFAULT_PROPERTY_FILE = "jdepend.properties";
 
     /**
-     * Constructs a <code>PropertyConfigurator</code> instance 
+     * Constructs a <code>PropertyConfigurator</code> instance
      * containing the properties specified in the file
      * <code>jdepend.properties</code>, if it exists.
      */
@@ -36,9 +36,9 @@ public class PropertyConfigurator {
     }
 
     /**
-     * Constructs a <code>PropertyConfigurator</code> instance 
+     * Constructs a <code>PropertyConfigurator</code> instance
      * with the specified property set.
-     * 
+     *
      * @param p Property set.
      */
     public PropertyConfigurator(Properties p) {
@@ -46,15 +46,16 @@ public class PropertyConfigurator {
     }
 
     /**
-     * Constructs a <code>PropertyConfigurator</code> instance 
+     * Constructs a <code>PropertyConfigurator</code> instance
      * with the specified property file.
-     * 
+     *
      * @param f Property file.
      */
     public PropertyConfigurator(File f) {
         this(loadProperties(f));
     }
 
+    @universe.qual.Pure
     public Collection getFilteredPackages() {
 
         Collection packages = new ArrayList();
@@ -76,6 +77,7 @@ public class PropertyConfigurator {
         return packages;
     }
 
+    @universe.qual.Pure
     public Collection getConfiguredPackages() {
 
         Collection packages = new ArrayList();
@@ -93,6 +95,7 @@ public class PropertyConfigurator {
         return packages;
     }
 
+    @universe.qual.Pure
     public boolean getAnalyzeInnerClasses() {
 
         String key = "analyzeInnerClasses";
@@ -104,6 +107,7 @@ public class PropertyConfigurator {
         return true;
     }
 
+    @universe.qual.Pure
     public static File getDefaultPropertyFile() {
         String home = System.getProperty("user.home");
         return new File(home, DEFAULT_PROPERTY_FILE);

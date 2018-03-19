@@ -29,6 +29,7 @@
     <pathelement location="${build.dir}"/>
     <pathelement location="/home/mier/jsr308/checker-framework/checker/build"/>
     <pathelement location="/home/mier/jsr308/immutability/build/classes/main"/>
+    <pathelement location="/home/mier/jsr308/universe/bin/src"/>
   </path>
 
   <target name="prepare">

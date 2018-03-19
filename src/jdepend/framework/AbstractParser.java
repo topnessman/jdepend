@@ -4,10 +4,10 @@ import java.io.*;
 import java.util.*;
 
 /**
- * The <code>AbstractParser</code> class is the base class 
- * for classes capable of parsing files to create a 
+ * The <code>AbstractParser</code> class is the base class
+ * for classes capable of parsing files to create a
  * <code>JavaClass</code> instance.
- * 
+ *
  * @author <b>Mike Clark</b>
  * @author Clarkware Consulting, Inc.
  */
@@ -41,7 +41,7 @@ public abstract class AbstractParser {
     /**
      * Informs registered parser listeners that the specified
      * <code>JavaClass</code> was parsed.
-     * 
+     *
      * @param jClass Parsed Java class.
      */
     protected void onParsedJavaClass(JavaClass jClass) {
@@ -50,6 +50,7 @@ public abstract class AbstractParser {
         }
     }
 
+    @universe.qual.Pure
     protected PackageFilter getFilter() {
         if (filter == null) {
             setFilter(new PackageFilter());
@@ -61,6 +62,7 @@ public abstract class AbstractParser {
         this.filter = filter;
     }
 
+    @universe.qual.Pure
     protected void debug(String message) {
         if (DEBUG) {
             System.err.println(message);
